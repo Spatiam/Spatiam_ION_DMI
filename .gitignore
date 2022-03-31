@@ -1,0 +1,4 @@
+*.log
+*.out
+spatiam_config.txt
+.DS_Store
