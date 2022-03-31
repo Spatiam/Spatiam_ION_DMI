@@ -8,7 +8,6 @@ Note: This software is in experimental status.
 View our demo at https://youtu.be/LVo4pMIpKQQ
 
 ### Features
-#### The DMI currently supports the following API calls with the DTN Manager:
 - Spatiam DTN Manager Login
 - Network Access through UUID
 - Node Creation (Including Gateway Nodes)
@@ -17,7 +16,7 @@ View our demo at https://youtu.be/LVo4pMIpKQQ
 - Automatic ION Relaunch with Network Updates
 
 ### Installation
-- For the scripts to work properly you must have already built and installed ION on your machine (ionstart is ready to run). This has been tested with ION version 4.0.2 but is expected to work with 4.X.X versions.
+- For the scripts to work properly you must have already built and installed ION on your machine (`ionstart` is ready to run). The DMI has been tested with ION version 4.0.2 but it is expected to work with 4.X.X versions.
 - Install Python (3) Requirements with `pip3 install -r requirements.txt`
 - Run with `python3 instance.py`
 
