@@ -44,6 +44,7 @@ def ionrestart():
         if ion_alive():
             ionstop_command = 'ionstop'
             subprocess.Popen([ionstop_command], shell=True, stdout=PIPE, stderr=PIPE).wait()
+            time.sleep(2)
 
         ionstart_command = 'ionstart -I ' + CONFIG_FILENAME
         subprocess.Popen([ionstart_command], shell=True, stdout=PIPE, stderr=PIPE).wait()
