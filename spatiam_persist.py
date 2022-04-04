@@ -60,37 +60,44 @@ def ionrestart():
 # download_config: Download configuration file of given node
 # ----------------------------------------------------------
 def download_config():
-    r = requests.get(MGR_API_URL + 'dynamic-config', params={'node': NODE_UUID, 'listeningip': NODE_LISTENING_IP, 'length':315360000})
+    try:
+        r = requests.get(MGR_API_URL + 'dynamic-config', params={'node': NODE_UUID, 'listeningip': NODE_LISTENING_IP, 'length':315360000})
 
-    if r.status_code == 200:
-        config = r.text
-        # Update only if config file has changed (network could be reporting 'cosmetic' change)
-        if not config == open(CONFIG_FILENAME).read():
-            try:
-                print("Network update detected (" + str(datetime.datetime.now())+")")
-                config_file = open(CONFIG_FILENAME, "w")
-                config_file.write(config)
-                config_file.close()
-                print("Node configuration downloaded (" +CONFIG_FILENAME +")")
-                ionrestart()
-                print("\nChecking for updates...")
+        if r.status_code == 200:
+            config = r.text
+            # Update only if config file has changed (network could be reporting 'cosmetic' change)
+            if not config == open(CONFIG_FILENAME).read():
+                try:
+                    print("Network update detected (" + str(datetime.datetime.now())+")")
+                    config_file = open(CONFIG_FILENAME, "w")
+                    config_file.write(config)
+                    config_file.close()
+                    print("Node configuration downloaded (" +CONFIG_FILENAME +")")
+                    ionrestart()
+                    print("\nChecking for updates...")
+                    return True
+                except Exception as e:
+                    print(e)
+                    return False
+            else:
                 return True
-            except Exception as e:
-                print(e)
-                return False
         else:
-            return True
-    else:
+            return False
+
+    except:
         return False
 
 # -----------------------------------------------------------------
 # latest_network_update: Returns timestamp of latest network update
 # -----------------------------------------------------------------
 def latest_network_update():
-    r = requests.get(MGR_API_URL + 'api/network/'+NETWORK_ID+'/last_change', headers = {'Authorization': 'Token ' + AUTH_TOKEN})
-    if r.status_code == 200:
-        return datetime.datetime.fromisoformat(r.text)
-    else:
+    try:
+        r = requests.get(MGR_API_URL + 'api/network/'+NETWORK_ID+'/last_change', headers = {'Authorization': 'Token ' + AUTH_TOKEN})
+        if r.status_code == 200:
+            return datetime.datetime.fromisoformat(r.text)
+        else:
+            return None
+    except:
         return None
 
 while True:
