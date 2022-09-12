@@ -1,5 +1,5 @@
 # Spatiam-DMI-IPNSIG
-This software will create, connect, and maintain your ION DTN nodes through Spatiam Corporation's DTN Manager (https://www.spatiam.com/ion-dtn-mgr/).
+This software will create, connect, and maintain your ION DTN nodes through Spatiam Corporation's DTN Manager (https://www.spatiam.com/dtn-mgr/).
 Note: This software is in experimental status.
 
 ![architecture](https://s3.us-west-2.amazonaws.com/www.spatiam.com/external_media/spatiam_dmi_architecture.png)
